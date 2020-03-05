@@ -1,0 +1,181 @@
+﻿@model CustomerViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h5 class="font-weight-bold text-primary"><i class="icon-stack-plus mr-1"></i> Create</h5>
+<hr />
+<div class="row">
+    <div class="col-md-2">
+        <div class="form-group">
+            <label asp-for="Customer.CustomerID" class="control-label"></label>
+            <div class="input-group">
+                <input asp-for="Customer.CustomerID" type="text" class="form-control onlynumber" placeholder="Customer ID" />
+            </div>
+            <span asp-validation-for="Customer.CustomerID" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+            <label asp-for="Customer.CustomerName" class="control-label"></label>
+            <div class="input-group">
+                <input asp-for="Customer.CustomerName" class="form-control" placeholder="Customer Name" />
+            </div>
+            <span asp-validation-for="Customer.CustomerName" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="form-group">
+            <label asp-for="Customer.Code" class="control-label"></label>
+            <div class="input-group">
+                <input asp-for="Customer.Code" class="form-control" placeholder="Code" maxlength="5" />
+            </div>
+            <span asp-validation-for="Customer.Code" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+            <label asp-for="Customer.OutletId" class="control-label"></label>
+            <div class="input-group">
+                <select asp-for="Customer.OutletId" class="form-control" asp-items="ViewBag.OutletId">
+                    <option value="">Select Outlet</option>
+                </select>
+            </div>
+            <span asp-validation-for="Customer.OutletId" class="text-danger"></span>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label asp-for="Customer.Address" class="control-label"></label>
+            <div class="input-group">
+                <textarea asp-for="Customer.Address" class="form-control" placeholder="Address" style="resize:none;"></textarea>
+            </div>
+            <span asp-validation-for="Customer.Address" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="form-group">
+            <label asp-for="Customer.StartDate" class="control-label"></label>
+            <div class="input-group">
+                <input asp-for="Customer.StartDate" class="form-control" placeholder="Start Date" />
+            </div>
+            <span asp-validation-for="Customer.StartDate" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="form-group">
+            <label asp-for="Customer.EndDate" class="control-label"></label>
+            <div class="input-group">
+                <input asp-for="Customer.EndDate" class="form-control" placeholder="End Date" />
+            </div>
+            <span asp-validation-for="Customer.EndDate" class="text-danger"></span>
+        </div>
+    </div>
+</div>
+<form asp-action="Create" method="post">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <button type="button" class="btn btn-light" id="btn-add"><i class="icon-add mr-1"></i> ADD</button>
+                <button type="submit" value="SUBMIT" class="btn btn-primary"><i class="icon-database-add mr-1"></i> SAVE</button>
+            </div>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-bordered" width="100">
+                <thead>
+                    <tr class="text-center">
+                        <th>
+                            @Html.DisplayNameFor(model => model.Customer.CustomerID)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Customer.CustomerName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Customer.Code)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Customer.StartDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Customer.EndDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Customer.Address)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Customer.OutletId)
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="tbody-create">
+                    <!-- Body Table Area -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var flag = 0;
+            $("#btn-add").on("click", function () {
+                var _customerid = $("#Customer_CustomerID").val();
+                var _customername = $("#Customer_CustomerName").val();
+                var _address = $("#Customer_Address").val();
+                var _code = $("#Customer_Code").val();
+                var _startdate = $("#Customer_StartDate").val();
+                var _endate = $("#Customer_EndDate").val();
+                var _outletid = $("#Customer_OutletId").val();
+
+                var _input_customid = '<input type="text" name="item[' + flag + '].CustomerID" class="form-control border-0 py-0" value="' + _customerid + '" readonly />';
+                var _input_customername = '<input type="text" name="item[' + flag + '].CustomerName" class="form-control border-0 py-0" value="' + _customername + '" readonly />';
+                var _input_address = '<input type="text" name="item[' + flag + '].Address" class="form-control border-0 py-0" value="' + _address + '" readonly />';
+                var _input_code = '<input type="text" name="item[' + flag + '].Code" class="form-control border-0 py-0" value="' + _code + '" readonly />';
+                var _input_startdate = '<input type="text" name="item[' + flag + '].StartDate" class="form-control border-0 py-0" value="' + _startdate + '" readonly />';
+                var _input_enddate = '<input type="text" name="item[' + flag + '].EndDate" class="form-control border-0 py-0" value="' + _endate + '" readonly />';
+                var _input_outletid = '<input type="text" name="item[' + flag + '].OutletID" class="form-control border-0 py-0" value="' + _outletid + '" readonly />';
+
+                var _tr = '<tr class="text-center" id=' + flag + '><td>' + _input_customid + '</td>' +
+                    '</td><td>' + _input_customername + '</input>' +
+                    '</td><td>' + _input_code + '</input>' +
+                    '</td><td>' + _input_startdate + '</input>' +
+                    '</td><td>' + _input_enddate + '</input>' +
+                    '</td><td>' + _input_address + '</input>' +
+                    '</td><td>' + _input_outletid + '</input>' +
+                    '</td></tr>'
+
+                if (_customerid != "" && _customername != "" && _outletid != "") {
+                    $("#tbody-create").append(_tr);
+                    $("#btn-save").removeClass("d-none");
+                    reset();
+                    flag++;
+                }
+            });
+
+            $('.onlynumber').keyup(function (e) {
+                if (/\D/g.test(this.value)) {
+                    this.value = this.value.replace(/\D/g, '');
+                }
+            });
+
+            function reset() {
+                $("#Customer_CustomerID").val("");
+                $("#Customer_CustomerName").val("");
+                $("#Customer_Address").val("");
+                $("#Customer_Code").val("");
+                $("#Customer_StartDate").val("");
+                $("#Customer_EndDate").val("");
+                $("#Customer_OutletId").trigger("change");
+            }
+        });
+
+    </script>
+}

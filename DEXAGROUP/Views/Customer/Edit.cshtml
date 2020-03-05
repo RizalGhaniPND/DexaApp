@@ -1,0 +1,89 @@
+﻿@model DEXAGROUP.Models.Customers
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h5 class="font-weight-bold text-success"><i class="icon-stack2 mr-1"></i> Edit Customer</h5>
+<hr />
+<form asp-action="Edit">
+    <div class="row">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label asp-for="CustomerID" class="control-label"></label>
+                <div class="input-group">
+                    <input asp-for="CustomerID" class="form-control" readonly />
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="CustomerName" class="control-label"></label>
+                <div class="input-group">
+                    <input asp-for="CustomerName" class="form-control" />
+                </div>
+                <span asp-validation-for="CustomerName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label asp-for="Code" class="control-label"></label>
+                <div class="input-group">
+                    <input asp-for="Code" class="form-control" />
+                </div>
+                <span asp-validation-for="Code" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="OutletId" class="control-label"></label>
+                <div class="input-group">
+                    <select asp-for="OutletId" class="form-control" asp-items="ViewBag.OutletId">
+                        <option value="">Select Outlet</option>
+                    </select>
+                </div>
+                <span asp-validation-for="OutletId" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Address" class="control-label"></label>
+                <div class="input-group">
+                    <textarea asp-for="Address" class="form-control" placeholder="Address" style="resize:none;"></textarea>
+                </div>
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label asp-for="StartDate" class="control-label"></label>
+                <div class="input-group">
+                    <input asp-for="StartDate" class="form-control" placeholder="Start Date" />
+                </div>
+                <span asp-validation-for="StartDate" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label asp-for="EndDate" class="control-label"></label>
+                <div class="input-group">
+                    <input asp-for="EndDate" class="form-control" placeholder="End Date" />
+                </div>
+                <span asp-validation-for="EndDate" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <a asp-action="Index">Back to List</a> | 
+                <button type="submit" class="btn btn-success"><i class="icon-database-edit2 mr-1"></i> SAVE</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+
