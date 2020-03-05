@@ -71,7 +71,7 @@ var DateTimePickers = function() {
             autoUpdateInput: false,
             locale: {
                 cancelLabel: 'Clear',
-                format: 'DD-MMM-YYYY'
+                //format: 'DD-MMM-YYYY'
             }
         });
 

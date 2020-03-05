@@ -9,7 +9,7 @@
 <div class="row">
     <div class="col-md-2">
         <div class="form-group">
-            <label asp-for="Customer.CustomerID" class="control-label"></label>
+            <label asp-for="Customer.CustomerID" class="control-label font-weight-bold"></label>
             <div class="input-group">
                 <input asp-for="Customer.CustomerID" type="text" class="form-control onlynumber" placeholder="Customer ID" />
             </div>
@@ -18,7 +18,7 @@
     </div>
     <div class="col-md-4">
         <div class="form-group">
-            <label asp-for="Customer.CustomerName" class="control-label"></label>
+            <label asp-for="Customer.CustomerName" class="control-label font-weight-bold"></label>
             <div class="input-group">
                 <input asp-for="Customer.CustomerName" class="form-control" placeholder="Customer Name" />
             </div>
@@ -27,7 +27,7 @@
     </div>
     <div class="col-md-2">
         <div class="form-group">
-            <label asp-for="Customer.Code" class="control-label"></label>
+            <label asp-for="Customer.Code" class="control-label font-weight-bold"></label>
             <div class="input-group">
                 <input asp-for="Customer.Code" class="form-control" placeholder="Code" maxlength="5" />
             </div>
@@ -36,7 +36,7 @@
     </div>
     <div class="col-md-4">
         <div class="form-group">
-            <label asp-for="Customer.OutletId" class="control-label"></label>
+            <label asp-for="Customer.OutletId" class="control-label font-weight-bold"></label>
             <div class="input-group">
                 <select asp-for="Customer.OutletId" class="form-control" asp-items="ViewBag.OutletId">
                     <option value="">Select Outlet</option>
@@ -49,27 +49,33 @@
 <div class="row">
     <div class="col-md-6">
         <div class="form-group">
-            <label asp-for="Customer.Address" class="control-label"></label>
+            <label asp-for="Customer.Address" class="control-label font-weight-bold"></label>
             <div class="input-group">
-                <textarea asp-for="Customer.Address" class="form-control" placeholder="Address" style="resize:none;"></textarea>
+                <textarea asp-for="Customer.Address" class="form-control" placeholder="Entry your address" style="resize:none;"></textarea>
             </div>
             <span asp-validation-for="Customer.Address" class="text-danger"></span>
         </div>
     </div>
     <div class="col-md-3">
         <div class="form-group">
-            <label asp-for="Customer.StartDate" class="control-label"></label>
+            <label asp-for="Customer.StartDate" class="control-label font-weight-bold"></label>
             <div class="input-group">
-                <input asp-for="Customer.StartDate" class="form-control" placeholder="Start Date" />
+                <span class="input-group-prepend">
+                    <span class="input-group-text"><i class="icon-calendar22"></i></span>
+                </span>
+                <input asp-for="Customer.StartDate" type="text" class="form-control daterange-single-empty" />
             </div>
             <span asp-validation-for="Customer.StartDate" class="text-danger"></span>
         </div>
     </div>
     <div class="col-md-3">
         <div class="form-group">
-            <label asp-for="Customer.EndDate" class="control-label"></label>
+            <label asp-for="Customer.EndDate" class="control-label font-weight-bold"></label>
             <div class="input-group">
-                <input asp-for="Customer.EndDate" class="form-control" placeholder="End Date" />
+                <span class="input-group-prepend">
+                    <span class="input-group-text"><i class="icon-calendar22"></i></span>
+                </span>
+                <input asp-for="Customer.EndDate" type="text" class="form-control daterange-single-empty" />
             </div>
             <span asp-validation-for="Customer.EndDate" class="text-danger"></span>
         </div>
