@@ -6,6 +6,14 @@
 
 <h5 class="font-weight-bold text-primary"><i class="icon-stack-plus mr-1"></i> Create</h5>
 <hr />
+<div id="alert-message">
+    @*<div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Error !</strong> Customer ID, Customer Name and Outlet Can Not be Null.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>*@
+</div>
 <div class="row">
     <div class="col-md-2">
         <div class="form-group">
@@ -13,7 +21,7 @@
             <div class="input-group">
                 <input asp-for="Customer.CustomerID" type="text" class="form-control onlynumber" placeholder="Customer ID" />
             </div>
-            <span asp-validation-for="Customer.CustomerID" class="text-danger"></span>
+            <label class="control-label text-danger customerid-validation d-none">ID can't null !</label>
         </div>
     </div>
     <div class="col-md-4">
@@ -22,7 +30,7 @@
             <div class="input-group">
                 <input asp-for="Customer.CustomerName" class="form-control" placeholder="Customer Name" />
             </div>
-            <span asp-validation-for="Customer.CustomerName" class="text-danger"></span>
+            <label class="control-label text-danger customername-validation d-none">Customer Name can't null !</label>
         </div>
     </div>
     <div class="col-md-2">
@@ -31,7 +39,6 @@
             <div class="input-group">
                 <input asp-for="Customer.Code" class="form-control" placeholder="Code" maxlength="5" />
             </div>
-            <span asp-validation-for="Customer.Code" class="text-danger"></span>
         </div>
     </div>
     <div class="col-md-4">
@@ -42,7 +49,7 @@
                     <option value="">Select Outlet</option>
                 </select>
             </div>
-            <span asp-validation-for="Customer.OutletId" class="text-danger"></span>
+            <label class="control-label text-danger outletid-validation d-none">Outlet can't null !</label>
         </div>
     </div>
 </div>
@@ -132,7 +139,30 @@
     <script type="text/javascript">
         $(document).ready(function () {
             var flag = 0;
+
             $("#btn-add").on("click", function () {
+                alert_notification();
+            });
+
+            $('.onlynumber').keyup(function (e) {
+                if (/\D/g.test(this.value)) {
+                    this.value = this.value.replace(/\D/g, '');
+                }
+            });
+
+            function reset() {
+                $("#Customer_CustomerID").val("");
+                $("#Customer_CustomerName").val("");
+                $("#Customer_Address").val("");
+                $("#Customer_Code").val("");
+                $("#Customer_StartDate").val("");
+                $("#Customer_EndDate").val("");
+                $("#Customer_OutletId").val("");
+
+                $(".customerid-validation").addClass("d-none");
+            }
+
+            function add_value() {
                 var _customerid = $("#Customer_CustomerID").val();
                 var _customername = $("#Customer_CustomerName").val();
                 var _address = $("#Customer_Address").val();
@@ -164,22 +194,29 @@
                     reset();
                     flag++;
                 }
-            });
+            }
 
-            $('.onlynumber').keyup(function (e) {
-                if (/\D/g.test(this.value)) {
-                    this.value = this.value.replace(/\D/g, '');
+            function alert_notification() {
+                var cus_id = $("#Customer_CustomerID").val();
+                var cus_name = $("#Customer_CustomerName").val();
+                var cus_outlet = $("#Customer_OutletId").val();
+
+                var alert_component = '<div class="alert alert-danger alert-dismissible fade show" role="alert">' +
+                    '<strong>Error !</strong> Customer ID, Customer Name and Outlet Can Not be Null.' +
+                    '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
+                    '<span aria-hidden="true">&times;</span></button></div>'
+
+                if (cus_id == "" || cus_name == "" || cus_outlet == "") {
+                    $("#alert-message").append(alert_component);
+                    $(".alert").delay(3000).fadeOut(
+                        "normal",
+                        function () {
+                            $(this).remove();
+                        });
+                } else {
+                    $("#alert-message").empty();
+                    add_value();
                 }
-            });
-
-            function reset() {
-                $("#Customer_CustomerID").val("");
-                $("#Customer_CustomerName").val("");
-                $("#Customer_Address").val("");
-                $("#Customer_Code").val("");
-                $("#Customer_StartDate").val("");
-                $("#Customer_EndDate").val("");
-                $("#Customer_OutletId").val("");
             }
         });
 

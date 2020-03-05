@@ -10,11 +10,12 @@ namespace DEXAGROUP.Models
     public class Customers
     {
         [Key]
-        [Required(ErrorMessage = "{0} is required !")]
+        [Required(ErrorMessage = "{0} Can't be null !")]
         [Display(Name = "Customer ID")]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public long CustomerID { get; set; }
 
+        [Required(ErrorMessage = "{0} Can't be null !")]
         [Display(Name = "Customer Name")]
         [StringLength(50, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 5)]
         public string CustomerName { get; set; }
@@ -27,12 +28,10 @@ namespace DEXAGROUP.Models
         [StringLength(5, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 2)]
         public string Code { get; set; }
 
-        [Required]
         [Display(Name = "Start Date")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime? StartDate { get; set; }
 
-        [Required]
         [Display(Name = "End Date")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime? EndDate { get; set; }
