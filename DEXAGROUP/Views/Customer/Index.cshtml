@@ -11,7 +11,7 @@
 </p>
 <table id="table-customers" class="table table-striped table-bordered" style="width:100%">
     <thead>
-        <tr>
+        <tr class="text-center">
             <th>
                 @Html.DisplayNameFor(model => model.CustomerID)
             </th>
@@ -39,33 +39,33 @@
     <tbody>
         @foreach (var item in Model)
         {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CustomerID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CustomerName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Address)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Code)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StartDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EndDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Outlet.OutletName)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.CustomerID">Edit</a> |
-                <a asp-action="Delete" asp-route-id="@item.CustomerID">Delete</a>
-            </td>
-        </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Code)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Outlet.OutletName)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.CustomerID">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.CustomerID">Delete</a>
+                </td>
+            </tr>
         }
     </tbody>
 </table>
@@ -73,7 +73,12 @@
 @section Scripts {
     <script type="text/javascript">
         $(document).ready(function () {
-            $('#table-customers').DataTable();
+            $('#table-customers').DataTable({
+                "paging": true,
+                "ordering": false,
+                "info": false,
+                "lengthChange": false
+            });
         });
     </script>
 }

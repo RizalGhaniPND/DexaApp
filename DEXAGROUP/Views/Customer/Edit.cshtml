@@ -19,7 +19,7 @@
         </div>
         <div class="col-md-4">
             <div class="form-group">
-                <label asp-for="CustomerName" class="control-label"></label>
+                <label asp-for="CustomerName" class="control-label font-weight-bold"></label>
                 <div class="input-group">
                     <input asp-for="CustomerName" class="form-control" />
                 </div>
@@ -28,16 +28,16 @@
         </div>
         <div class="col-md-2">
             <div class="form-group">
-                <label asp-for="Code" class="control-label"></label>
+                <label asp-for="Code" class="control-label font-weight-bold"></label>
                 <div class="input-group">
-                    <input asp-for="Code" class="form-control" />
+                    <input asp-for="Code" class="form-control" maxlength="5" />
                 </div>
                 <span asp-validation-for="Code" class="text-danger"></span>
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
-                <label asp-for="OutletId" class="control-label"></label>
+                <label asp-for="OutletId" class="control-label font-weight-bold"></label>
                 <div class="input-group">
                     <select asp-for="OutletId" class="form-control" asp-items="ViewBag.OutletId">
                         <option value="">Select Outlet</option>
@@ -50,7 +50,7 @@
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
-                <label asp-for="Address" class="control-label"></label>
+                <label asp-for="Address" class="control-label font-weight-bold"></label>
                 <div class="input-group">
                     <textarea asp-for="Address" class="form-control" placeholder="Address" style="resize:none;"></textarea>
                 </div>
@@ -59,18 +59,24 @@
         </div>
         <div class="col-md-3">
             <div class="form-group">
-                <label asp-for="StartDate" class="control-label"></label>
+                <label asp-for="StartDate" class="control-label font-weight-bold"></label>
                 <div class="input-group">
-                    <input asp-for="StartDate" class="form-control" placeholder="Start Date" />
+                    <span class="input-group-prepend">
+                        <span class="input-group-text"><i class="icon-calendar22"></i></span>
+                    </span>
+                    <input asp-for="StartDate" type="text" class="form-control daterange-single-empty" />
                 </div>
                 <span asp-validation-for="StartDate" class="text-danger"></span>
             </div>
         </div>
         <div class="col-md-3">
             <div class="form-group">
-                <label asp-for="EndDate" class="control-label"></label>
+                <label asp-for="EndDate" class="control-label font-weight-bold"></label>
                 <div class="input-group">
-                    <input asp-for="EndDate" class="form-control" placeholder="End Date" />
+                    <span class="input-group-prepend">
+                        <span class="input-group-text"><i class="icon-calendar22"></i></span>
+                    </span>
+                    <input asp-for="EndDate" type="text" class="form-control daterange-single-empty" />
                 </div>
                 <span asp-validation-for="EndDate" class="text-danger"></span>
             </div>
