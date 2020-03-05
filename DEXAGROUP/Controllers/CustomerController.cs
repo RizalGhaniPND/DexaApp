@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DEXAGROUP.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class CustomerController : Controller
     {
         private readonly DexaDbContext _context;

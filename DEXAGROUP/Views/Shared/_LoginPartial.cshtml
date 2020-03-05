@@ -6,23 +6,44 @@
 {
     <form asp-controller="Account" asp-action="LogOff" method="post" id="logoutForm" class="navbar-right">
         <ul class="navbar-nav">
-            <li class="nav-item">
-                <a asp-controller="Manage" asp-action="Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
+            <li class="nav-item pt-2">
+                Hello <a asp-controller="Manage" asp-action="Index" title="Manage">@UserManager.GetUserName(User)</a>
             </li>
             <li class="nav-item">
-                <button type="submit" class="btn btn-link navbar-btn navbar-link">Log off</button>
+                <button type="submit" class="btn btn-link text-danger navbar-btn navbar-link">Log off</button>
             </li>
         </ul>
     </form>
+    <ul class="navbar-nav flex-grow-1">
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">
+                <i class="icon-home mr-1"></i> Home
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Outlet" asp-action="Index">
+                <i class="icon-location4 mr-1"></i> Outlet
+            </a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link text-dark dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="icon-stack2 mr-1"></i> Customer
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" asp-controller="Customer" asp-action="Index"><i class="icon-list2 mr-2"></i> Overview</a>
+                <a class="dropdown-item" asp-controller="Customer" asp-action="Create"><i class="icon-stack-plus mr-2"></i> Create</a>
+            </div>
+        </li>
+    </ul>
 }
 else
 {
-<ul class="navbar-nav">
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-controller="Account" asp-action="Register">Register</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-controller="Account" asp-action="Login">Login</a>
-    </li>
-</ul>
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-controller="Account" asp-action="Register">Register</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-controller="Account" asp-action="Login">Login</a>
+        </li>
+    </ul>
 }

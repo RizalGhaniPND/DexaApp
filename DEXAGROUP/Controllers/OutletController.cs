@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace DEXAGROUP.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class OutletController : Controller
     {
         private readonly DexaDbContext _context;

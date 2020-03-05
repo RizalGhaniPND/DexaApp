@@ -21,7 +21,7 @@ namespace DEXAGROUP.Models
         public string CustomerName { get; set; }
 
         [Display(Name = "Address")]
-        [StringLength(250, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 10)]
+        [StringLength(250, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 5)]
         public string Address { get; set; }
 
         [Display(Name = "Code")]
@@ -29,11 +29,11 @@ namespace DEXAGROUP.Models
         public string Code { get; set; }
 
         [Display(Name = "Start Date")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd-MMM-yyyy}")]
         public DateTime? StartDate { get; set; }
 
         [Display(Name = "End Date")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd-MMM-yyyy}")]
         public DateTime? EndDate { get; set; }
 
         [Display(Name = "Outlet")]

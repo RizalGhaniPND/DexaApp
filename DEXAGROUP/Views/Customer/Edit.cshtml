@@ -9,6 +9,8 @@
 <form asp-action="Edit">
     <div class="row">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input asp-for="StartDate" type="hidden" />
+        <input asp-for="EndDate" type="hidden" />
         <div class="col-md-2">
             <div class="form-group">
                 <label asp-for="CustomerID" class="control-label"></label>
@@ -57,14 +59,14 @@
                 <span asp-validation-for="Address" class="text-danger"></span>
             </div>
         </div>
-        <div class="col-md-3">
+        @*<div class="col-md-3">
             <div class="form-group">
                 <label asp-for="StartDate" class="control-label font-weight-bold"></label>
-                <div class="input-group">
+                <div class="input-group pt-4">
                     <span class="input-group-prepend">
                         <span class="input-group-text"><i class="icon-calendar22"></i></span>
                     </span>
-                    <input asp-for="StartDate" type="text" class="form-control daterange-single-empty" />
+                    <input asp-for="StartDate" type="text" class="form-control daterange-single-empty" value="@(Model.StartDate != null ? Model.StartDate.Value.ToString("dd-MMM-yyyy") : "")" />
                 </div>
                 <span asp-validation-for="StartDate" class="text-danger"></span>
             </div>
@@ -72,15 +74,15 @@
         <div class="col-md-3">
             <div class="form-group">
                 <label asp-for="EndDate" class="control-label font-weight-bold"></label>
-                <div class="input-group">
+                <div class="input-group pt-4">
                     <span class="input-group-prepend">
                         <span class="input-group-text"><i class="icon-calendar22"></i></span>
                     </span>
-                    <input asp-for="EndDate" type="text" class="form-control daterange-single-empty" />
+                    <input asp-for="EndDate" type="text" class="form-control daterange-single-empty" value="@(Model.EndDate != null ? Model.EndDate.ToString("dd-MMM-yyyy") : "")"  />
                 </div>
                 <span asp-validation-for="EndDate" class="text-danger"></span>
             </div>
-        </div>
+        </div>*@
     </div>
     <div class="row">
         <div class="col-md-6">
