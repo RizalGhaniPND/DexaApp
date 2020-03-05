@@ -17,5 +17,6 @@ namespace DEXAGROUP.Data
         public DbSet<Customers> Customers { get; set; }
         public DbSet<Outlets> Outlets { get; set; }
 
+
     }
 }
